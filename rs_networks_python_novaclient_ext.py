@@ -25,13 +25,13 @@ class NetworkManager(base.ManagerWithFind):
     resource_class = base.Resource
 
     def list(self):
-        return self._list('/rs-networks', 'networks')
+        return self._get('/rs-networks', 'networks')
 
     def get(self, network):
-        return self._get('/rs-networks/%s', base.getid(network), 'network')
+        return self._get('/rs-networks/%s' % base.getid(network), 'network')
 
     def delete(self, network):
-        self._delete('/rs-networks/%s', base.getid(network))
+        self._delete('/rs-networks/%s' % base.getid(network))
 
     def create(self, label, cidr):
         body = 'stub'
@@ -43,7 +43,7 @@ def do_network(cs, args):
     """
     Show a network
     """
-    network = cs.rs._networks_python_novaclient_ext.get(args.network_id)
+    network = cs.rs_networks_python_novaclient_ext.get(args.network_id)
     utils.print_dict(network._info)
 
 
@@ -51,7 +51,7 @@ def do_network_list(cs, args):
     """
     List networks
     """
-    networks = cs.rs._networks_python_novaclient_ext.list()
+    networks = cs.rs_networks_python_novaclient_ext.list()
     utils.print_list(networks)
 
 
@@ -64,7 +64,7 @@ def do_network_create(cs, args):
     """
     Create a network
     """
-    network = cs.rs._networks_python_novaclient_ext.create(args.label,
+    network = cs.rs_networks_python_novaclient_ext.create(args.label,
                                                            args.cidr)
     utils.print_dict(network._info)
 
@@ -74,4 +74,4 @@ def do_network_delete(cs, args):
     """
     Delete a network
     """
-    cs.rs._networks_python_novaclient_ext.delete(args.network_id)
+    cs.rs_networks_python_novaclient_ext.delete(args.network_id)
