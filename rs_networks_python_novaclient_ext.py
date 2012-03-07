@@ -25,7 +25,7 @@ class NetworkManager(base.ManagerWithFind):
     resource_class = base.Resource
 
     def list(self):
-        return self._get('/rs-networks', 'networks')
+        return self._list('/rs-networks', 'networks')
 
     def get(self, network):
         return self._get('/rs-networks/%s' % base.getid(network), 'network')
@@ -34,7 +34,7 @@ class NetworkManager(base.ManagerWithFind):
         self._delete('/rs-networks/%s' % base.getid(network))
 
     def create(self, label, cidr):
-        body = 'stub'
+        body = {'network': {'label': label, 'cidr': cidr}}
         return self._create('/rs-networks', body, 'network')
 
 
@@ -52,7 +52,7 @@ def do_network_list(cs, args):
     List networks
     """
     networks = cs.rs_networks_python_novaclient_ext.list()
-    utils.print_list(networks)
+    utils.print_list(networks, ['ID', 'Label', 'CIDR'])
 
 
 @utils.arg('label', metavar='<network_label>',
