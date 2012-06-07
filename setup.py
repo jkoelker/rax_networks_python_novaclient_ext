@@ -15,15 +15,15 @@
 import setuptools
 
 setuptools.setup(
-    name='rs_networks_python_novaclient_ext',
+    name='rax_networks_python_novaclient_ext',
     version='0.1',
     description='Adds rackspace networks support to python-novaclient',
     long_description=open('README.rst').read(),
     author='Rackspace',
     author_email='jkoelker@rackspace.com',
-    url='https://github.com/jkoelker/rs_networks_python_novaclient_ext',
+    url='https://github.com/jkoelker/rax_networks_python_novaclient_ext',
     license='Apache License, Version 2.0',
-    py_modules=['rs_networks_python_novaclient_ext'],
+    py_modules=['rax_networks_python_novaclient_ext'],
     install_requires=['python-novaclient'],
     classifiers=[
         'Development Status :: 3 - Alpha',

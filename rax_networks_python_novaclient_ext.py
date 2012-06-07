@@ -25,17 +25,17 @@ class NetworkManager(base.ManagerWithFind):
     resource_class = base.Resource
 
     def list(self):
-        return self._list('/rs-networks', 'networks')
+        return self._list('/rax-networks', 'networks')
 
     def get(self, network):
-        return self._get('/rs-networks/%s' % base.getid(network), 'network')
+        return self._get('/rax-networks/%s' % base.getid(network), 'network')
 
     def delete(self, network):
-        self._delete('/rs-networks/%s' % base.getid(network))
+        self._delete('/rax-networks/%s' % base.getid(network))
 
     def create(self, label, cidr):
         body = {'network': {'label': label, 'cidr': cidr}}
-        return self._create('/rs-networks', body, 'network')
+        return self._create('/rax-networks', body, 'network')
 
 
 @utils.arg('network_id', metavar='<network_id>', help='ID of network')
@@ -43,7 +43,7 @@ def do_network(cs, args):
     """
     Show a network
     """
-    network = cs.rs_networks_python_novaclient_ext.get(args.network_id)
+    network = cs.rax_networks_python_novaclient_ext.get(args.network_id)
     utils.print_dict(network._info)
 
 
@@ -51,7 +51,7 @@ def do_network_list(cs, args):
     """
     List networks
     """
-    networks = cs.rs_networks_python_novaclient_ext.list()
+    networks = cs.rax_networks_python_novaclient_ext.list()
     utils.print_list(networks, ['ID', 'Label', 'CIDR'])
 
 
@@ -64,7 +64,7 @@ def do_network_create(cs, args):
     """
     Create a network
     """
-    network = cs.rs_networks_python_novaclient_ext.create(args.label,
+    network = cs.rax_networks_python_novaclient_ext.create(args.label,
                                                            args.cidr)
     utils.print_dict(network._info)
 
@@ -74,4 +74,4 @@ def do_network_delete(cs, args):
     """
     Delete a network
     """
-    cs.rs_networks_python_novaclient_ext.delete(args.network_id)
+    cs.rax_networks_python_novaclient_ext.delete(args.network_id)
