@@ -21,7 +21,7 @@ setuptools.setup(
     long_description=open('README.rst').read(),
     author='Rackspace',
     author_email='jkoelker@rackspace.com',
-    url='https://github.com/jkoelker/rax_networks_python_novaclient_ext',
+    url='https://github.com/rackspace/rax_networks_python_novaclient_ext',
     license='Apache License, Version 2.0',
     py_modules=['rax_networks_python_novaclient_ext'],
     install_requires=['python-novaclient'],

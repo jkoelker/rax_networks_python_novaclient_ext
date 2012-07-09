@@ -1,10 +1,10 @@
 =================================
-rs_networks_python_novaclient_ext
+rax_networks_python_novaclient_ext
 =================================
 
 Adds network extension support to python-novaclient.
 
 This extension is autodiscovered once installed. To use::
 
-    pip install rs_networks_python_novaclient_ext
+    pip install rax_networks_python_novaclient_ext
     nova networks
